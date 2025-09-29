@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hello-world"
+version = "0.1.0"
+description = "A simple hello world package with Makefile validation tools"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Matthew Martin", email = "matthewdeanmartin@gmail.com"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+requires-python = ">=3.8"
+dependencies = []
+
+[project.optional-dependencies]
+makefile-tools = [
+    "almost-make",
+    "make2help",
+    "makefile-checker",
+    "shellcheck-makefile",
+    "shellcheck-py",
+]
+# Separate groups due to dependency conflicts
+make-help-tools = [
+    "make-help",
+    "make-help-helper",
+]
+mbake-tools = [
+    "mbake",
+]
+all = [
+    "almost-make",
+    "make2help",
+    "makefile-checker", 
+    "shellcheck-makefile",
+    "shellcheck-py",
+    # Note: make-help and mbake have conflicting click dependencies
+    # Install separately if needed: pip install make-help make-help-helper
+    # Install separately if needed: pip install mbake
+]
+
+[project.urls]
+Homepage = "https://github.com/matthewdeanmartin/makemake"
+Repository = "https://github.com/matthewdeanmartin/makemake"
+Issues = "https://github.com/matthewdeanmartin/makemake/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["hello_world*"]
+exclude = ["tests*"]
